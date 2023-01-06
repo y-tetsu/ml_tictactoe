@@ -41,11 +41,11 @@ class TicTacToe:
                 turn, board = O, [B for _ in range(9)]
                 while True:
                     self.show(board)
-                    if result := self.judge(board):
-                        if result == D:
+                    if winner := self.judge(board):
+                        if winner == D:
                             print('--- Draw ---')
                         else:
-                            print(f'*** {KEY[board[result]]} win!! ***')
+                            print(f'*** {KEY[board[winner]]} win!! ***')
                         input('\n>>> Press enter to start new game')
                         break
                     print(f'turn : {KEY[turn]}')
@@ -57,22 +57,25 @@ class TicTacToe:
             pass
 
     def simulate(self, num=100):
-        count, ret = 0, [0 for _ in range(4)]
+        count, ret, records = 0, [0 for _ in range(4)], []
         while True:
-            turn, board = O, [B for _ in range(9)]
+            turn, board, record = O, [B for _ in range(9)], []
             while True:
-                if result := self.judge(board):
-                    ret[result] += 1
+                if winner := self.judge(board):
+                    ret[winner] += 1
                     count += 1
+                    records += [[winner] + record]
                     break
                 move = self.put[turn](board, turn)
                 board[move] = turn
+                record += [move]
                 turn = X if turn == O else O
             if count >= num:
                 print(f'O = {ret[O]}/{num} ({ret[O]/num*100:.1f}%)')
                 print(f'X = {ret[X]}/{num} ({ret[X]/num*100:.1f}%)')
                 print(f'D = {ret[D]}/{num} ({ret[D]/num*100:.1f}%)')
                 break
+        return records
 
 
 def user(board, turn):
@@ -93,4 +96,5 @@ def rand(board, turn):
 
 if __name__ == '__main__':
     tictactoe = TicTacToe(rand, rand)
-    tictactoe.simulate(100000)
+    for record in tictactoe.simulate(10):
+        print(record)
