@@ -27,7 +27,15 @@ class Patterns:
             self.indexs[repeat] = {j: i for i, j in product}
         return self.indexs[repeat][cells]
 
+    def get_header(self):
+        header = ['rate']
+        for key, value in self.patterns.items():
+            header += [key + '-' + str(i) for i in range(3**len(value))]
+        return header
+
 
 if __name__ == '__main__':
     scores = RandomRecords(10).scoring()
     patterns = Patterns(scores)
+    for i in patterns.get_header():
+        print(i)
