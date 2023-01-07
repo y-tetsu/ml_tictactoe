@@ -16,6 +16,10 @@ class Regression:
         self.p = Patterns(None)
         self.show = show
 
+    def _print(self, *args):
+        if self.show:
+            print(*args)
+
     def get_pattern(self, board):
         dataset = []
         for key, value in self.p.patterns.items():
@@ -28,19 +32,16 @@ class Regression:
     def put(self, board, turn):
         blank = [i for i, cell in enumerate(board) if cell == B]
         index, score = None, 0
-        if self.show:
-            print()
+        self._print()
         for i in blank:
             board[i] = turn
             predict = self.model.predict(self.get_pattern(board))[0]
             cond = predict > score if turn == O else predict < score
             if index is None or cond:
                 index, score = i, predict
-            if self.show:
-                print(i, '=', predict)
+            self._print(i, '=', predict)
             board[i] = B
-        if self.show:
-            print('put :', index)
+        self._print('put :', index)
         return index
 
 
