@@ -46,7 +46,7 @@ class Regression:
 
 
 if __name__ == '__main__':
-    num = 1000
+    num = 10000
     for name in ['rand10.csv', 'rand100.csv', 'rand1000.csv', 'rand10000.csv']:
         model = Regression(name, show=False)
         print(f'\n[{name}]')
