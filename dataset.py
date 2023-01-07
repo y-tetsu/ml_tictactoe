@@ -47,7 +47,8 @@ class Patterns:
             w = csv.writer(f)
             header = self.get_header()
             w.writerow(header)
-            scores = sorted(self.scores.items(), key=lambda x: x[1]['total']/x[1]['count'])
+            scores = sorted(self.scores.items(),
+                            key=lambda x: x[1]['total'] / x[1]['count'])
             for board, score in scores:
                 dataset = self.get_dataset(board, score)
                 line = [dataset['rate']]
