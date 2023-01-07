@@ -15,7 +15,7 @@ class TicTacToe:
     def show(self, board):
         print()
         for i in range(3):
-            print(' ' + '|'.join([KEY[board[i*3+j]] for j in range(3)]))
+            print(' ' + '|'.join([KEY[board[i * 3 + j]] for j in range(3)]))
             if i < 2:
                 print(' -+-+-')
         print()
