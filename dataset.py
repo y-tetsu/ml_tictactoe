@@ -42,9 +42,21 @@ class Patterns:
             dataset[key][self.to_index(pattern)] = 1
         return dataset
 
+    def to_csv(self, name):
+        with open(name, 'w', newline='') as f:
+            w = csv.writer(f)
+            header = self.get_header()
+            w.writerow(header)
+            scores = sorted(self.scores.items(), key=lambda x: x[1]['total']/x[1]['count'])
+            for board, score in scores:
+                dataset = self.get_dataset(board, score)
+                line = [dataset['rate']]
+                for key in self.patterns.keys():
+                    line += dataset[key]
+                w.writerow(line)
+
 
 if __name__ == '__main__':
     scores = RandomRecords(10).scoring()
     patterns = Patterns(scores)
-    for i in patterns.get_dataset():
-        print(i)
+    patterns.to_csv('rand10.csv')
