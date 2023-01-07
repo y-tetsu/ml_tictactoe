@@ -14,14 +14,10 @@ class TicTacToe:
 
     def show(self, board):
         print()
-        line = []
-        for i, cell in enumerate(board, 1):
-            line.append(KEY[cell])
-            if i % 3 == 0:
-                print(' ' + '|'.join(line))
-                if i < 9:
-                    print(' -+-+-')
-                line = []
+        for i in range(3):
+            print(' ' + '|'.join([KEY[board[i*3+j]] for j in range(3)]))
+            if i < 2:
+                print(' -+-+-')
         print()
 
     def judge(self, board):
@@ -98,3 +94,4 @@ if __name__ == '__main__':
     tictactoe = TicTacToe(rand, rand)
     for record in tictactoe.simulate(10):
         print(record)
+    tictactoe.play()
