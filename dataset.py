@@ -58,6 +58,7 @@ class Patterns:
 
 
 if __name__ == '__main__':
-    scores = RandomRecords(10).scoring()
-    patterns = Patterns(scores)
-    patterns.to_csv('rand10.csv')
+    for num in [10, 100, 1000]:
+        scores = RandomRecords(num).scoring()
+        patterns = Patterns(scores)
+        patterns.to_csv('rand' + str(num) + '.csv')
