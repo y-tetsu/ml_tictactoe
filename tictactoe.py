@@ -10,7 +10,7 @@ KEY = ' OX'
 
 class TicTacToe:
     def __init__(self, player1, player2):
-        self.put = {O: player1, X: player2}
+        self.move = {O: player1, X: player2}
 
     def show(self, board):
         print()
@@ -45,7 +45,7 @@ class TicTacToe:
                         input('\n>>> Press enter to start new game')
                         break
                     print(f'turn : {KEY[turn]}')
-                    move = self.put[turn](board, turn)
+                    move = self.move[turn](board, turn)
                     board[move] = turn
                     turn = X if turn == O else O
 
@@ -62,7 +62,7 @@ class TicTacToe:
                     count += 1
                     records += [[winner] + record]
                     break
-                move = self.put[turn](board, turn)
+                move = self.move[turn](board, turn)
                 board[move] = turn
                 record += [move]
                 turn = X if turn == O else O

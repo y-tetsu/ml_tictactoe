@@ -6,7 +6,7 @@ class TestTicTacToe(unittest.TestCase):
     def test_init(self):
         expected = {O: 'player1', X: 'player2'}
         t = TicTacToe('player1', 'player2')
-        self.assertEqual(t.put, expected)
+        self.assertEqual(t.move, expected)
         self.assertEqual(B, 0)
         self.assertEqual(O, 1)
         self.assertEqual(X, 2)
