@@ -41,7 +41,7 @@ class TicTacToe:
                         if winner == D:
                             print('--- Draw ---')
                         else:
-                            print(f'*** {KEY[board[winner]]} win!! ***')
+                            print(f'*** {KEY[winner]} win!! ***')
                         input('\n>>> Press enter to start new game')
                         break
                     print(f'turn : {KEY[turn]}')
