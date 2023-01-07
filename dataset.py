@@ -58,9 +58,10 @@ class Patterns:
 
 
 if __name__ == '__main__':
+    rand = RandomRecords()
     for num in [10, 100, 1000, 10000]:
         name = 'rand' + str(num) + '.csv'
         print(f'\n[{name}]')
-        scores = RandomRecords(num).scoring()
+        scores = rand.scoring(num)
         patterns = Patterns(scores)
         patterns.to_csv(name)
