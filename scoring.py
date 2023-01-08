@@ -29,5 +29,5 @@ class RandomRecords:
 
 if __name__ == '__main__':
     records = RandomRecords()
-    for key, value in records.scoring(10).items():
+    for key, value in records.scoring(1).items():
         print(key, value)

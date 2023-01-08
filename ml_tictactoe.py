@@ -9,6 +9,6 @@ if __name__ == '__main__':
         if turn == 'O' or turn == 'X':
             break
     if turn == 'O':
-        TicTacToe(user, Regression('rand10000.csv').put).play()
+        TicTacToe(user, Regression('rand10000.csv').move).play()
     else:
-        TicTacToe(Regression('rand10000.csv').put, user).play()
+        TicTacToe(Regression('rand10000.csv').move, user).play()

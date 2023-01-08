@@ -29,7 +29,7 @@ class Regression:
             dataset += data
         return [dataset]
 
-    def put(self, board, turn):
+    def move(self, board, turn):
         blank = [i for i, cell in enumerate(board) if cell == B]
         index, score = None, 0
         self._print()
@@ -41,7 +41,7 @@ class Regression:
                 index, score = i, predict
             self._print(i, '=', predict)
             board[i] = B
-        self._print('put :', index)
+        self._print('move :', index)
         return index
 
 
@@ -51,6 +51,6 @@ if __name__ == '__main__':
         model = Regression(name, show=False)
         print(f'\n[{name}]')
         print('--- O ---')
-        TicTacToe(model.put, rand).simulate(num)
+        TicTacToe(model.move, rand).simulate(num)
         print('--- X ---')
-        TicTacToe(rand, model.put).simulate(num)
+        TicTacToe(rand, model.move).simulate(num)
