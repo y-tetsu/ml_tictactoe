@@ -20,14 +20,14 @@ class Regression:
         if self.show:
             print(*args)
 
-    def get_pattern(self, board):
-        dataset = []
+    def to_x(self, board):
+        x = []
         for key, value in self.p.patterns.items():
-            pattern = tuple([board[i] for i in value])
-            data = [0 for _ in range(3**len(value))]
-            data[self.p.to_index(pattern)] = 1
-            dataset += data
-        return [dataset]
+            state = tuple([board[i] for i in value])
+            patterns = [0 for _ in range(3**len(value))]
+            patterns[self.p.to_index(state)] = 1
+            x += patterns
+        return [x]
 
     def move(self, board, turn):
         blank = [i for i, cell in enumerate(board) if cell == B]
@@ -35,7 +35,7 @@ class Regression:
         self._print()
         for i in blank:
             board[i] = turn
-            predict = self.model.predict(self.get_pattern(board))[0]
+            predict = self.model.predict(self.to_x(board))[0]
             cond = predict > score if turn == O else predict < score
             if index is None or cond:
                 index, score = i, predict
