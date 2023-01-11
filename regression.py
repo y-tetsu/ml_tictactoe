@@ -8,9 +8,9 @@ from dataset import Patterns
 class Regression:
     def __init__(self, csv, show=True):
         dataset = pd.read_csv(csv)
-        dataset_except_rate = dataset.drop('rate', axis=1)
-        x = dataset_except_rate.values
-        y = dataset['rate'].values
+        dataset_except_ave = dataset.drop('ave', axis=1)
+        x = dataset_except_ave.values
+        y = dataset['ave'].values
         self.model = LinearRegression()
         self.model.fit(x, y)
         self.p = Patterns(None)

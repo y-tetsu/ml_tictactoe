@@ -28,13 +28,13 @@ class Patterns:
         return self.indexs[repeat][cells]
 
     def get_header(self):
-        header = ['rate']
+        header = ['ave']
         for key, value in self.patterns.items():
             header += [key + '-' + str(i) for i in range(3**len(value))]
         return header
 
     def get_dataset(self, board, score):
-        dataset = {'rate': score['total'] / score['count']}
+        dataset = {'ave': score['total'] / score['count']}
         for key, value in self.patterns.items():
             pattern = tuple([board[i] for i in value])
             if key not in dataset:
@@ -51,7 +51,7 @@ class Patterns:
                             key=lambda x: x[1]['total'] / x[1]['count'])
             for board, score in scores:
                 dataset = self.get_dataset(board, score)
-                line = [dataset['rate']]
+                line = [dataset['ave']]
                 for key in self.patterns.keys():
                     line += dataset[key]
                 w.writerow(line)
