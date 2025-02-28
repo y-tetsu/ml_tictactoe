@@ -98,7 +98,7 @@ class Patterns:
 
 
 if __name__ == '__main__':
-    rand = RandomRecords()
+    rand = RandomRecords(o_win=10, x_win=-10, draw=0)  # Set custom weights
     for num in [10, 100, 1000, 10000]:
         name = 'rand' + str(num) + '.csv'
         print(f'\n[{name}]')

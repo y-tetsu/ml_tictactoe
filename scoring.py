@@ -1,17 +1,21 @@
 from tictactoe import TicTacToe, B, O, X, rand
 
 
-O_WIN = 10
-X_WIN = -10
-DRAW = 0
-
-
 class RandomRecords:
     """Class to handle random records and scoring for TicTacToe games."""
 
-    def __init__(self):
-        """Initializes the RandomRecords with a TicTacToe game instance."""
+    def __init__(self, o_win=10, x_win=-10, draw=0):
+        """Initializes the RandomRecords with a TicTacToe game instance and custom weights.
+
+        Args:
+            o_win (int): Weight for O win.
+            x_win (int): Weight for X win.
+            draw (int): Weight for draw.
+        """
         self.t = TicTacToe(rand, rand)
+        self.o_win = o_win
+        self.x_win = x_win
+        self.draw = draw
 
     def scoring(self, num):
         """Simulates games and calculates scores for each board state.
@@ -26,7 +30,7 @@ class RandomRecords:
         records = self.t.simulate(num)
         for record in records:
             winner = record.pop(0)
-            score = O_WIN if winner == O else X_WIN if winner == X else DRAW
+            score = self.o_win if winner == O else self.x_win if winner == X else self.draw
             turn, board = O, [B] * 9
             for move in record:
                 board[move] = turn
