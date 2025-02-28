@@ -4,7 +4,10 @@ from tictactoe import B, O, X
 
 
 class TestPatterns(unittest.TestCase):
+    """Unit tests for the Patterns class."""
+
     def test_init(self):
+        """Tests the initialization of the Patterns class."""
         scores = 'scores'
         patterns = {
             'h1': (0, 1, 2),
@@ -22,6 +25,7 @@ class TestPatterns(unittest.TestCase):
         self.assertEqual(p.indexs, {})
 
     def test_to_index(self):
+        """Tests the to_index method of the Patterns class."""
         p = Patterns('scores')
         to_index2 = {(0, 0): 0,
                      (0, 1): 1,
@@ -66,6 +70,7 @@ class TestPatterns(unittest.TestCase):
         self.assertEqual(p.indexs[3], to_index3)
 
     def test_get_header(self):
+        """Tests the get_header method of the Patterns class."""
         header = [
             'ave',
             'h1-0', 'h1-1', 'h1-2', 'h1-3', 'h1-4', 'h1-5', 'h1-6', 'h1-7', 'h1-8', 'h1-9', 'h1-10', 'h1-11', 'h1-12', 'h1-13', 'h1-14', 'h1-15', 'h1-16', 'h1-17', 'h1-18', 'h1-19', 'h1-20', 'h1-21', 'h1-22', 'h1-23', 'h1-24', 'h1-25', 'h1-26',  # noqa: E501
@@ -81,6 +86,7 @@ class TestPatterns(unittest.TestCase):
         self.assertEqual(p.get_header(), header)
 
     def test_dataset(self):
+        """Tests the get_dataset method of the Patterns class."""
         p = Patterns('scores')
         p.to_index((0, 0))
         board = [B, B, B,

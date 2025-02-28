@@ -1,15 +1,27 @@
 from tictactoe import TicTacToe, B, O, X, rand
 
+
 O_WIN = 10
 X_WIN = -10
 DRAW = 0
 
 
 class RandomRecords:
+    """Class to handle random records and scoring for TicTacToe games."""
+
     def __init__(self):
+        """Initializes the RandomRecords with a TicTacToe game instance."""
         self.t = TicTacToe(rand, rand)
 
     def scoring(self, num):
+        """Simulates games and calculates scores for each board state.
+
+        Args:
+            num (int): The number of games to simulate.
+
+        Returns:
+            dict: A dictionary with board states as keys and their scores as values.
+        """
         scores = {}
         records = self.t.simulate(num)
         for record in records:

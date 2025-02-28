@@ -1,8 +1,8 @@
 from tictactoe import TicTacToe, user
 from regression import Regression
 
-
 if __name__ == '__main__':
+    """Main function to start the Tic Tac Toe game with a regression model."""
     turn = None
     while True:
         turn = input('select your player O or X > ')

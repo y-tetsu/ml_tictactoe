@@ -6,7 +6,15 @@ from dataset import Patterns
 
 
 class Regression:
+    """Class to represent the regression model for Tic Tac Toe."""
+
     def __init__(self, csv, show=True):
+        """Initializes the Regression class with a CSV file.
+
+        Args:
+            csv: Path to the CSV file.
+            show: Boolean to indicate whether to print debug information.
+        """
         dataset = pd.read_csv(csv)
         dataset_except_ave = dataset.drop('ave', axis=1)
         x = dataset_except_ave.values
@@ -17,10 +25,23 @@ class Regression:
         self.show = show
 
     def _print(self, *args):
+        """Prints debug information if show is True.
+
+        Args:
+            *args: Arguments to print.
+        """
         if self.show:
             print(*args)
 
     def to_x(self, board):
+        """Converts the board state to a feature vector.
+
+        Args:
+            board: List representing the board state.
+
+        Returns:
+            list: Feature vector representing the board state.
+        """
         x = []
         for key, value in self.p.patterns.items():
             state = tuple([board[i] for i in value])
@@ -30,6 +51,15 @@ class Regression:
         return [x]
 
     def move(self, board, turn):
+        """Gets the best move based on the regression model.
+
+        Args:
+            board: List representing the board state.
+            turn: The current player's turn.
+
+        Returns:
+            int: The position chosen by the regression model.
+        """
         blank = [i for i, cell in enumerate(board) if cell == B]
         index, score = None, 0
         self._print()
