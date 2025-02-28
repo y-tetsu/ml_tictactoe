@@ -67,9 +67,9 @@ class TicTacToe:
                 record += [move]
                 turn = X if turn == O else O
             if count >= num:
-                print(f'O = {ret[O]}/{num} ({ret[O]/num*100:.1f}%)')
-                print(f'X = {ret[X]}/{num} ({ret[X]/num*100:.1f}%)')
-                print(f'D = {ret[D]}/{num} ({ret[D]/num*100:.1f}%)')
+                print(f'O = {ret[O]} / {num} ({ret[O] / num * 100:.1f}%)')
+                print(f'X = {ret[X]} / {num} ({ret[X] / num * 100:.1f}%)')
+                print(f'D = {ret[D]} / {num} ({ret[D] / num * 100:.1f}%)')
                 break
         return records
 
