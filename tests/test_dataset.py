@@ -85,7 +85,7 @@ class TestPatterns(unittest.TestCase):
         p = Patterns('scores')
         self.assertEqual(p.get_header(), header)
 
-    def test_dataset(self):
+    def test_get_dataset(self):
         """Tests the get_dataset method of the Patterns class."""
         p = Patterns('scores')
         p.to_index((0, 0))
