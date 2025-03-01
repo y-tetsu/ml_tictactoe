@@ -7,11 +7,14 @@ Creating a Tic Tac Toe AI using Multiple Linear Regression
 This project creates an AI to play the Tic Tac Toe game using multiple linear regression. The AI converts the board state into a feature vector and uses a linear regression model to select the optimal move.
 
 ## File Structure
-- `tictactoe.py`: Implements the game logic for Tic Tac Toe.
-- `scoring.py`: Implements a class to handle game scoring and random game records.
+- `ml_tictactoe.py`: Main file to start the Tic Tac Toe game using the regression model.
+- `tictactoe.py`: Implements the game logic for Tic Tac Toe. Includes constants `WIDTH` for the board width and `SIZE` for the number of cells.
+- `user.py`: Implements a function to handle user input.
+- `rand.py`: Implements a function to generate random moves.
+- `recorder.py`: Implements a class to handle game records.
+- `scorer.py`: Implements a class to handle game scoring.
 - `regression.py`: Implements a class to select the optimal move using a linear regression model.
 - `dataset.py`: Manages board patterns and generates datasets.
-- `ml_tictactoe.py`: Main file to start the Tic Tac Toe game using the regression model.
 - `README.md`: This project's description in Japanese.
 - `README.en.md`: This project's description in English.
 
