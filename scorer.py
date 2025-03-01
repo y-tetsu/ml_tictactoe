@@ -1,4 +1,4 @@
-from tictactoe import B, O, X
+from tictactoe import B, O, X, SIZE
 from recorder import Recorder
 
 
@@ -30,7 +30,7 @@ class Scorer:
         for record in records:
             winner = record.pop(0)
             score = self.o_win if winner == O else self.x_win if winner == X else self.draw
-            turn, board = O, [B] * 9
+            turn, board = O, [B] * SIZE
             for move in record:
                 board[move] = turn
                 key = tuple(board)

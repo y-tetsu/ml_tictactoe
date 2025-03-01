@@ -3,6 +3,8 @@ O = 1
 X = 2
 D = 3
 KEY = ' OX'
+WIDTH = 3
+SIZE = WIDTH * WIDTH
 
 
 class TicTacToe:
@@ -21,13 +23,13 @@ class TicTacToe:
     def reset(self):
         """Resets the game state."""
         self.turn = O
-        self.board = [B for _ in range(9)]
+        self.board = [B for _ in range(SIZE)]
         self.record = []
 
     def display(self):
         """Displays the current state of the board."""
         print('\n' + '\n -+-+-\n'.join(
-            ' ' + '|'.join(KEY[self.board[i * 3 + j]] for j in range(3)) for i in range(3)
+            ' ' + '|'.join(KEY[self.board[i * WIDTH + j]] for j in range(WIDTH)) for i in range(WIDTH)
         ) + '\n')
 
     def judge(self):
