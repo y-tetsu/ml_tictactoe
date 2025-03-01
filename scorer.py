@@ -43,6 +43,6 @@ class Scorer:
 
 
 if __name__ == '__main__':
-    records = Recorder().get_records(1)
+    records = Recorder().get_records(10)
     for key, value in Scorer().scoring(records).items():
         print(key, value)
