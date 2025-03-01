@@ -1,5 +1,6 @@
-from tictactoe import TicTacToe, user
+from tictactoe import TicTacToe
 from regression import Regression
+from user import user
 
 if __name__ == '__main__':
     """Main function to start the Tic Tac Toe game with a regression model."""
