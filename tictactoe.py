@@ -1,6 +1,3 @@
-from random import randint
-
-
 B = 0
 O = 1
 X = 2
@@ -97,22 +94,8 @@ class TicTacToe:
         return records
 
 
-def rand(board, turn):
-    """Gets a random move.
-
-    Args:
-        board: List representing the board state.
-        turn: The current player's turn.
-
-    Returns:
-        int: The position chosen randomly.
-    """
-    blank = [i for i, cell in enumerate(board) if cell == B]
-    rand_index = randint(0, len(blank) - 1)
-    return blank[rand_index]
-
-
 if __name__ == '__main__':
+    from rand import rand
     tictactoe = TicTacToe(rand, rand)
     for record in tictactoe.simulate(10):
         print(record)

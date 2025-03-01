@@ -1,8 +1,9 @@
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 
-from tictactoe import TicTacToe, B, O, rand
+from tictactoe import TicTacToe, B, O
 from dataset import Patterns
+from rand import rand
 
 
 class Regression:

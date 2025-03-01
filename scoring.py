@@ -1,4 +1,5 @@
-from tictactoe import TicTacToe, B, O, X, rand
+from tictactoe import TicTacToe, B, O, X
+from rand import rand
 
 
 class RandomRecords:
