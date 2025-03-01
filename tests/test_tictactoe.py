@@ -20,44 +20,44 @@ class TestTicTacToe(unittest.TestCase):
         """Tests the judge method of the TicTacToe class."""
         t = TicTacToe('player1', 'player2')
         # B
-        board = [B for _ in range(9)]
-        self.assertEqual(t.judge(board), B)
+        t.board = [B for _ in range(9)]
+        self.assertEqual(t.judge(), B)
         # O
-        board = [O, O, O,
-                 B, B, B,
-                 B, B, B]
-        self.assertEqual(t.judge(board), O)
-        board = [B, B, B,
-                 O, O, O,
-                 B, B, B]
-        self.assertEqual(t.judge(board), O)
-        board = [B, B, B,
-                 B, B, B,
-                 O, O, O]
-        self.assertEqual(t.judge(board), O)
-        board = [O, B, B,
-                 B, O, B,
-                 B, B, O]
-        self.assertEqual(t.judge(board), O)
+        t.board = [O, O, O,
+                   B, B, B,
+                   B, B, B]
+        self.assertEqual(t.judge(), O)
+        t.board = [B, B, B,
+                   O, O, O,
+                   B, B, B]
+        self.assertEqual(t.judge(), O)
+        t.board = [B, B, B,
+                   B, B, B,
+                   O, O, O]
+        self.assertEqual(t.judge(), O)
+        t.board = [O, B, B,
+                   B, O, B,
+                   B, B, O]
+        self.assertEqual(t.judge(), O)
         # X
-        board = [X, B, B,
-                 X, B, B,
-                 X, B, B]
-        self.assertEqual(t.judge(board), X)
-        board = [B, X, B,
-                 B, X, B,
-                 B, X, B]
-        self.assertEqual(t.judge(board), X)
-        board = [B, B, X,
-                 B, B, X,
-                 B, B, X]
-        self.assertEqual(t.judge(board), X)
-        board = [B, B, X,
-                 B, X, B,
-                 X, B, B]
-        self.assertEqual(t.judge(board), X)
+        t.board = [X, B, B,
+                   X, B, B,
+                   X, B, B]
+        self.assertEqual(t.judge(), X)
+        t.board = [B, X, B,
+                   B, X, B,
+                   B, X, B]
+        self.assertEqual(t.judge(), X)
+        t.board = [B, B, X,
+                   B, B, X,
+                   B, B, X]
+        self.assertEqual(t.judge(), X)
+        t.board = [B, B, X,
+                   B, X, B,
+                   X, B, B]
+        self.assertEqual(t.judge(), X)
         # D
-        board = [X, O, X,
-                 X, O, O,
-                 O, X, O]
-        self.assertEqual(t.judge(board), D)
+        t.board = [X, O, X,
+                   X, O, O,
+                   O, X, O]
+        self.assertEqual(t.judge(), D)

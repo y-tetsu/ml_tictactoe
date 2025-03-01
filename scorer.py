@@ -1,34 +1,32 @@
-from tictactoe import TicTacToe, B, O, X
-from rand import rand
+from tictactoe import B, O, X
+from recorder import Recorder
 
 
-class RandomRecords:
-    """Class to handle random records and scoring for TicTacToe games."""
+class Scorer:
+    """Class to handle scoring for TicTacToe games."""
 
     def __init__(self, o_win=10, x_win=-10, draw=0):
-        """Initializes the RandomRecords with a TicTacToe game instance and custom weights.
+        """Initializes the Scorer with custom weights.
 
         Args:
             o_win (int): Weight for O win.
             x_win (int): Weight for X win.
             draw (int): Weight for draw.
         """
-        self.t = TicTacToe(rand, rand)
         self.o_win = o_win
         self.x_win = x_win
         self.draw = draw
 
-    def scoring(self, num):
-        """Simulates games and calculates scores for each board state.
+    def scoring(self, records):
+        """Calculates scores for each board state from the given records.
 
         Args:
-            num (int): The number of games to simulate.
+            records (list): The list of game records.
 
         Returns:
             dict: A dictionary with board states as keys and their scores as values.
         """
         scores = {}
-        records = self.t.simulate(num)
         for record in records:
             winner = record.pop(0)
             score = self.o_win if winner == O else self.x_win if winner == X else self.draw
@@ -45,6 +43,6 @@ class RandomRecords:
 
 
 if __name__ == '__main__':
-    records = RandomRecords()
-    for key, value in records.scoring(1).items():
+    records = Recorder().get_records(1)
+    for key, value in Scorer().scoring(records).items():
         print(key, value)

@@ -2,7 +2,8 @@ import itertools
 import csv
 
 from tictactoe import B, O, X
-from scoring import RandomRecords
+from recorder import Recorder
+from scorer import Scorer
 
 
 class Patterns:
@@ -98,10 +99,13 @@ class Patterns:
 
 
 if __name__ == '__main__':
-    rand = RandomRecords(o_win=10, x_win=-10, draw=0)  # Set custom weights
+    from rand import rand
+    recorder = Recorder(player1=rand, player2=rand)
+    scorer = Scorer(o_win=10, x_win=-10, draw=0)
     for num in [10, 100, 1000, 10000]:
         name = 'rand' + str(num) + '.csv'
         print(f'\n[{name}]')
-        scores = rand.scoring(num)
+        records = recorder.get_records(num)
+        scores = scorer.scoring(records)
         patterns = Patterns(scores)
         patterns.to_csv(name)
