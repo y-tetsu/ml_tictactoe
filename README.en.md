@@ -11,6 +11,7 @@ This project creates an AI to play the Tic Tac Toe game using multiple linear re
 - `tictactoe.py`: Implements the game logic for Tic Tac Toe. Includes constants `WIDTH` for the board width and `SIZE` for the number of cells.
 - `user.py`: Implements a function to handle user input.
 - `rand.py`: Implements a function to generate random moves.
+- `minmax.py`: Implements a function to determine moves using the Minimax algorithm.
 - `recorder.py`: Implements a class to handle game records.
 - `scorer.py`: Implements a class to handle game scoring.
 - `regression.py`: Implements a class to select the optimal move using a linear regression model.
