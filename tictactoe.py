@@ -32,8 +32,12 @@ class TicTacToe:
             ' ' + '|'.join(KEY[self.board[i * WIDTH + j]] for j in range(WIDTH)) for i in range(WIDTH)
         ) + '\n')
 
-    def judge(self):
+    @staticmethod
+    def judge(board):
         """Judges the current state of the board.
+
+        Args:
+            board (list): List representing the board state.
 
         Returns:
             int: The winner (O or X), D for draw, or B for ongoing game.
@@ -42,9 +46,9 @@ class TicTacToe:
                     (0, 3, 6), (1, 4, 7), (2, 5, 8),  # vertical
                     (0, 4, 8), (2, 4, 6)]             # diagonal
         for c1, c2, c3 in patterns:
-            if self.board[c1] and self.board[c1] == self.board[c2] == self.board[c3]:
-                return self.board[c1]
-        return B if B in self.board else D
+            if board[c1] and board[c1] == board[c2] == board[c3]:
+                return board[c1]
+        return B if B in board else D
 
     def game(self, show=True):
         """Plays a single game of Tic Tac Toe.
@@ -59,7 +63,7 @@ class TicTacToe:
         while True:
             if show:
                 self.display()
-            if winner := self.judge():
+            if winner := self.judge(self.board):
                 if show:
                     if winner == D:
                         print('--- Draw ---')
@@ -75,17 +79,13 @@ class TicTacToe:
             self.turn = X if self.turn == O else O
         return self.record
 
-    def play(self):
-        """Starts the Tic Tac Toe game for two players."""
-        try:
-            while True:
-                self.game()
-                input('\n>>> Press enter to start new game')
-
-        except KeyboardInterrupt:
-            pass
-
 
 if __name__ == '__main__':
     from rand import rand
-    TicTacToe(rand, rand).play()
+    tictactoe = TicTacToe(rand, rand)
+    try:
+        while True:
+            tictactoe.game()
+            input('\n>>> Press enter to start new game')
+    except KeyboardInterrupt:
+        pass

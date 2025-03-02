@@ -19,4 +19,4 @@ def rand(board, turn):
 
 if __name__ == '__main__':
     from tictactoe import TicTacToe
-    TicTacToe(rand, rand).play()
+    TicTacToe(rand, rand).game()

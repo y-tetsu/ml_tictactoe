@@ -19,4 +19,4 @@ def user(board, turn):
 
 if __name__ == '__main__':
     from tictactoe import TicTacToe
-    TicTacToe(user, user).play()
+    TicTacToe(user, user).game()

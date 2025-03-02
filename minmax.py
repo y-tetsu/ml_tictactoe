@@ -1,4 +1,4 @@
-from tictactoe import B, O, X, D, SIZE
+from tictactoe import TicTacToe, B, O, X, D, SIZE
 
 
 def minmax(board, turn):
@@ -12,7 +12,7 @@ def minmax(board, turn):
         int: The position chosen by the Minimax algorithm.
     """
     def score(board, depth):
-        winner = judge(board)
+        winner = TicTacToe.judge(board)
         if winner == O:
             return 10 - depth
         elif winner == X:
@@ -20,15 +20,6 @@ def minmax(board, turn):
         elif winner == D:
             return 0
         return None
-
-    def judge(board):
-        patterns = [(0, 1, 2), (3, 4, 5), (6, 7, 8),  # horizontal
-                    (0, 3, 6), (1, 4, 7), (2, 5, 8),  # vertical
-                    (0, 4, 8), (2, 4, 6)]             # diagonal
-        for c1, c2, c3 in patterns:
-            if board[c1] and board[c1] == board[c2] == board[c3]:
-                return board[c1]
-        return B if B in board else D
 
     def minimax(board, depth, is_maximizing):
         if (s := score(board, depth)) is not None:
@@ -71,5 +62,8 @@ if __name__ == '__main__':
         turn = input('select your player O or X > ')
         if turn in ['o', 'x', 'O', 'X']:
             p1, p2 = (user, minmax) if turn in ['o', 'O'] else (minmax, user)
-            TicTacToe(p1, p2).play()
-            break
+            try:
+                TicTacToe(p1, p2).game()
+                input('\n>>> Press enter to start new game')
+            except KeyboardInterrupt:
+                break
